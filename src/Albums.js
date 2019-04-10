@@ -3,17 +3,22 @@ import { fetchAlbums } from "./Api"
 import "./sass/Albums.scss"
 
 class Albums extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      albums: []
+      albums: props.albums || []
     }
   }
   componentDidMount() {
-    fetchAlbums()
-    .then(json => {
-      this.setState({ albums: json })
-    })
+    const albums = window.__ALBUMS__ ? JSON.parse(window.__ALBUMS__) : []
+    delete window.__ALBUMS__
+    this.setState({ albums })
+    if (albums.length == 0) {
+      fetchAlbums()
+      .then(json => {
+        this.setState({ albums: json })
+      })
+    }
   }
   render() {
     return (

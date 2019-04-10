@@ -24,4 +24,8 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById("app"))
+if (!document.getElementById("app").childNodes.length) {
+  ReactDOM.render(<App />, document.getElementById("app"))
+} else {
+  ReactDOM.hydrate(<App />, document.getElementById("app"))
+}
