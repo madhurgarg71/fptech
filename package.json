@@ -1,0 +1,8 @@
+{
+  "name": "ssr-react-css",
+  "version": "1.0.0",
+  "description": "Server side rendering in react with css (without css-in-js).",
+  "main": "index.js",
+  "author": "Madhur Garg",
+  "license": "MIT"
+}
