@@ -1,10 +1,10 @@
 const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const CleanWebpackPlugin = require("clean-webpack-plugin")
-  
+
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, "./../../src/App.js"),
+    app: path.resolve(__dirname, "./../../src/Root.js"),
   },
 
   plugins: [
@@ -32,6 +32,17 @@ module.exports = {
         test: /\.js$/,
         loader: "babel-loader",
         exclude: /node_modules/
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+            },
+          },
+        ],
       }
     ]
   }
